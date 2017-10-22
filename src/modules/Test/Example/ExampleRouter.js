@@ -1,4 +1,4 @@
-import Layout from '@/components/Layout'
+import Layout from '@theme/components/Layout'
 import Example from './Example'
 
 export default [
