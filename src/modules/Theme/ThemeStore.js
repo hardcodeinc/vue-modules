@@ -9,7 +9,7 @@ const state = merge({
   showSidebar: true,
   footerAbsolute: false,
   footerFixed: false
-}, Vue.prototype.$env('theme'))
+}, Vue.prototype.$env.theme)
 
 // getters
 const getters = {

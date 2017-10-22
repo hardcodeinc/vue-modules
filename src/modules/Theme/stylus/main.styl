@@ -2,3 +2,9 @@
 @import './theme'
 
 @import '../../../../node_modules/vuetify/src/stylus/main'
+
+
+for color_name, color_value in $theme
+  .{color_name + '-color'}
+    $textColor = lightness(color_value) > 50% ? rgba(0,0,0,.8) : rgba(255,255,255,.9)
+    color: $textColor !important

@@ -2,8 +2,22 @@ export default {
   appTitle: 'Application Title',
   theme: {
     dark: false,
-    clippedLeft: true,
+    clippedLeft: false,
     miniVariant: false,
     showSidebar: true
+  },
+  colors: {
+    // sidebar: 'secondary',
+    footer: 'secondary',
+    appBar: 'primary'
+  },
+  appBar: {
+    icons: {
+      dark: true,
+      clippedLeft: true,
+      miniVariant: true,
+      footerFixed: true,
+      showSidebar: true
+    }
   }
 }

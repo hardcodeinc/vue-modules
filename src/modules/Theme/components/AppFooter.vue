@@ -1,7 +1,8 @@
 <template lang="pug">
   v-footer(
+    :class="$colorClass('footer')"
     :fixed="$store.getters.footerFixed"
   )
     v-spacer
-    div {{ $env('appTitle') }} © {{ new Date().getFullYear() }} - All rights reserved
+    div(:class="$colorClass('footer') + '-color'") {{ $env.appTitle }} © {{ new Date().getFullYear() }} - All rights reserved
 </template>
