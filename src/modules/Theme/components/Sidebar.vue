@@ -2,10 +2,10 @@
   v-navigation-drawer(
     app
     persistent
-    v-model="show"
-    :clipped="clipped"
     enable-resize-watcher
-    :mini-variant="miniVariant"
+    v-model="$store.state.theme.showSidebar"
+    :clipped="$store.state.theme.clippedLeft"
+    :mini-variant="$store.state.theme.miniVariant"
   )
     v-list(dense)
       v-list-tile
@@ -19,9 +19,7 @@
   export default {
     data () {
       return {
-        show: true,
-        miniVariant: false,
-        clipped: true
+        show: true
       }
     }
   }
