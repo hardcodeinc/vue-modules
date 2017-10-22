@@ -1,6 +1,8 @@
+var env = require('../../../.env.js').default
+
 // state
-const state = {
-  dark: true,
+const state = env.theme || {
+  dark: false,
   clippedLeft: true,
   miniVariant: false,
   showSidebar: true
@@ -8,7 +10,10 @@ const state = {
 
 // getters
 const getters = {
-  dark: state => state.dark
+  dark: state => state.dark,
+  clippedLeft: state => state.clippedLeft,
+  miniVariant: state => state.miniVariant,
+  showSidebar: state => state.showSidebar
 }
 
 // actions

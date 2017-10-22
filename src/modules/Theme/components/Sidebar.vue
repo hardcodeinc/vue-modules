@@ -3,9 +3,9 @@
     app
     persistent
     enable-resize-watcher
-    v-model="$store.state.theme.showSidebar"
-    :clipped="$store.state.theme.clippedLeft"
-    :mini-variant="$store.state.theme.miniVariant"
+    v-model="show"
+    :clipped="$store.getters.clippedLeft"
+    :mini-variant="$store.getters.miniVariant"
   )
     v-list(dense)
       v-list-tile
@@ -19,7 +19,12 @@
   export default {
     data () {
       return {
-        show: true
+        show: this.showSidebar
+      }
+    },
+    watch: {
+      '$store.getters.showSidebar' () {
+        this.show = this.$store.getters.showSidebar
       }
     }
   }

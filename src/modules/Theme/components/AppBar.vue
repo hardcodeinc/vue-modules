@@ -2,7 +2,7 @@
   v-toolbar(
     app
     fixed
-    :clipped-left="$store.state.theme.clippedLeft"
+    :clipped-left="$store.getters.clippedLeft"
   )
     v-btn(
       icon
@@ -27,8 +27,8 @@
       icon
       @click="toggle('dark')"
     )
-      v-icon(v-html="$store.state.theme.dark ? 'brightness_high' : 'brightness_2'")
-    v-toolbar-title Title
+      v-icon(v-html="$store.getters.dark ? 'brightness_high' : 'brightness_2'")
+    v-toolbar-title {{ $env('appTitle') }}
     v-spacer
     v-btn(
       icon

@@ -1,21 +1,24 @@
 <template lang="pug">
   .main-layout
     sidebar
-    appbar
+    app-bar
     main
       v-content
         v-fade-transition(mode="out-in")
           router-view
+      app-footer
 </template>
 
 <script>
   import Sidebar from './Sidebar'
-  import Appbar from './Appbar'
+  import AppBar from './AppBar'
+  import AppFooter from './AppFooter'
 
   export default {
     components: {
       Sidebar,
-      Appbar
+      AppBar,
+      AppFooter
     }
   }
 </script>
