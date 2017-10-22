@@ -1,6 +1,16 @@
-# skeleton
+# Vue Modules
 
-> A Vue.js project
+> A vue-cli template based on webpack.
+
+## Features
+
+* [Vuetify](https://vuetifyjs.com/)
+* Pug
+* Stylus
+* Vuex
+* Modules
+* Domains
+* Dotenv
 
 ## Build Setup
 
