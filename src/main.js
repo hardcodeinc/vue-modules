@@ -1,1 +1,1 @@
-require('./modules/Theme/bootstrap.js')
+require('./modules/Theme')

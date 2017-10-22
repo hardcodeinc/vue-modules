@@ -1,7 +1,7 @@
-var env = require('../../../.env.js').default
+import Vue from './bootstrap'
 
 // state
-const state = env.theme || {
+const state = Vue.prototype.$env('theme') || {
   dark: false,
   clippedLeft: true,
   miniVariant: false,
