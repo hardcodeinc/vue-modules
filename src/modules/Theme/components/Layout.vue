@@ -6,7 +6,7 @@
       v-content
         v-fade-transition(mode="out-in")
           router-view
-      app-footer
+    app-footer
 </template>
 
 <script>

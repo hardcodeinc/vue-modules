@@ -1,19 +1,23 @@
+var merge = require('webpack-merge')
 import Vue from './bootstrap'
 
 // state
-const state = Vue.prototype.$env('theme') || {
+const state = merge({
   dark: false,
   clippedLeft: true,
   miniVariant: false,
-  showSidebar: true
-}
+  showSidebar: true,
+  footerAbsolute: false,
+  footerFixed: false
+}, Vue.prototype.$env('theme'))
 
 // getters
 const getters = {
   dark: state => state.dark,
   clippedLeft: state => state.clippedLeft,
   miniVariant: state => state.miniVariant,
-  showSidebar: state => state.showSidebar
+  showSidebar: state => state.showSidebar,
+  footerFixed: state => state.footerFixed
 }
 
 // actions

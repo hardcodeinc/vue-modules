@@ -21,6 +21,7 @@
       v-icon web
     v-btn(
       icon
+      @click.stop="toggle('footerFixed')"
     )
       v-icon remove
     v-btn(
