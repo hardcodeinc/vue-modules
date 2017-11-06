@@ -8,19 +8,36 @@
     :clipped="$store.getters.clippedLeft"
     :mini-variant="$store.getters.miniVariant"
   )
-    v-list(dense)
-      v-list-tile
-        v-list-tile-action
-          v-icon(:class="$colorClass('sidebar') + '-color'") menu
-        v-list-tile-content
-          v-list-tile-title(:class="$colorClass('sidebar') + '-color'") Teste
+    .logo
+      router-link(to="/")
+        img(src="/static/logo.png" alt="logo")
+    .welcome(
+      v-if="!$store.getters.miniVariant"
+    )
+      h5 Welcome, John Doe!
+    slot(name="menu")
+      v-list
+        v-list-tile(
+          router
+          :key="key"
+          :to="item.to"
+          v-for="(item, key) in menuPrincipal"
+        )
+          v-list-tile-action
+            v-icon(v-html="item.icon")
+          v-list-tile-content
+            v-list-tile-title(v-text="item.title")
 </template>
 
 <script>
   export default {
     data () {
       return {
-        show: this.showSidebar
+        show: this.showSidebar,
+        menuPrincipal: [
+          {icon: 'home', title: 'Home', to: '/'},
+          {icon: 'security', title: 'Login', to: '/login'}
+        ]
       }
     },
     watch: {
@@ -30,3 +47,19 @@
     }
   }
 </script>
+
+<style lang="stylus">
+.logo
+  text-align center
+  padding-top 10px
+
+  img
+    max-width 50%
+
+.welcome
+  text-align center
+
+  h5
+    font-weight bold
+
+</style>

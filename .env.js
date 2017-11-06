@@ -9,7 +9,8 @@ export default {
   colors: {
     // sidebar: 'secondary',
     footer: 'secondary',
-    appBar: 'primary'
+    appBar: 'primary',
+    loginPage: 'primary'
   },
   appBar: {
     icons: {

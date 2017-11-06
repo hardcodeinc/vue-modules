@@ -3,12 +3,13 @@ import Example from './Example'
 
 export default [
   {
-    path: '/example',
+    path: '/',
     component: Layout,
     children: [
       {
         path: '/',
-        component: Example
+        component: Example,
+        meta: {unrequiredAuth: true}
       }
     ]
   }

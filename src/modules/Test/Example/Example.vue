@@ -1,13 +1,13 @@
 <template lang="pug">
   .hello
-    h1 Example
+    h2 {{msg}}
 </template>
 
 <script>
 export default {
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Modular Vue.js App'
     }
   }
 }
