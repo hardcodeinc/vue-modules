@@ -2,7 +2,10 @@ import Login from './Login'
 
 export default [
   {
-    path: '/',
-    component: Login
+    path: '/login',
+    component: Login,
+    meta: {
+      unrequiredAuth: true
+    }
   }
 ]
