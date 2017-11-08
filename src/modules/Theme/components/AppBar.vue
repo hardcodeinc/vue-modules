@@ -41,12 +41,10 @@
         :class="$colorClass('appBar') + '-color'"
         v-html="$store.getters.dark ? 'brightness_high' : 'brightness_2'"
       )
-    v-toolbar-title(:class="$colorClass('appBar') + '-color'") {{ $env.appTitle }}
-    v-spacer
-    v-btn(
-      icon
-    )
-      v-icon(:class="$colorClass('appBar') + '-color'") menu
+    v-toolbar-title(
+      :class="$colorClass('appBar') + '-color'"
+      v-if="$env.appTitle"
+    ) {{ $env.appTitle }}
 </template>
 
 <script>
