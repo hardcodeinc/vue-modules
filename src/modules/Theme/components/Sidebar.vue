@@ -36,6 +36,7 @@
         show: this.showSidebar,
         menuPrincipal: [
           {icon: 'home', title: 'Home', to: '/'},
+          {icon: 'library_add', title: 'CRUD', to: '/crud'},
           {icon: 'security', title: 'Login', to: '/login'}
         ]
       }

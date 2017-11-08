@@ -1,4 +1,5 @@
 import Layout from '@theme/components/Layout'
+import Home from './Home'
 import Example from './Example'
 
 export default [
@@ -8,8 +9,11 @@ export default [
     children: [
       {
         path: '/',
-        component: Example,
-        meta: {unrequiredAuth: true}
+        component: Home
+      },
+      {
+        path: '/crud',
+        component: Example
       }
     ]
   }

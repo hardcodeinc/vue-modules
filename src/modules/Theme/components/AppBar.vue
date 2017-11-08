@@ -1,6 +1,7 @@
 <template lang="pug">
   v-toolbar(
     app
+    flat
     fixed
     :class="$colorClass('appBar')"
     :clipped-left="$store.getters.clippedLeft"
@@ -56,3 +57,9 @@
     ])
   }
 </script>
+
+<style lang="stylus" scoped>
+nav
+  height: 200px
+  z-index: 0
+</style>

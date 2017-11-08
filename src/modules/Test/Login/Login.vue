@@ -54,8 +54,8 @@ export default {
   },
   methods: {
     login () {
+      localStorage.setItem('authorization', 'Bearer ' + 'token from api')
       let rollbackUri = localStorage.getItem('rollback-uri')
-
       this.$router.replace(rollbackUri || '/')
     }
   }
