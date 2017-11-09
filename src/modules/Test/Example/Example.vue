@@ -7,26 +7,24 @@
           v-spacer
           v-text-field(append-icon="search" label="Buscar" single-line placeholder="" v-model="search")
       v-data-table(
-        :headers="headers",
-        :items="items",
+        :headers="headers"
+        :items="items"
         :loading="loading"
         :pagination.sync="pagination"
         :rowsPerPageItems="rowsPerPageItems"
-        :search="search",
+        :search="search"
         :total-items="totalItems"
-        noDataText="Nenhum resultado disponível",
-        noResultsText="Nenhum resultado disponível",
-        hideActions
-        rowsPerPageText="Mostrar:",
+        noDataText="Nenhum resultado disponível"
+        noResultsText="Nenhum resultado disponível"
+        :hideActions="true"
+        rowsPerPageText="Mostrar:"
       )
         template(slot="items", slot-scope="props")
+          td {{ props.item.id }}
           td {{ props.item.name }}
-          td.text-xs-right {{ props.item.calories }}
-          td.text-xs-right {{ props.item.fat }}
-          td.text-xs-right {{ props.item.carbs }}
-          td.text-xs-right {{ props.item.protein }}
-          td.text-xs-right {{ props.item.sodium }}
-          td.text-xs-right {{ props.item.calcium }}
+          td {{ props.item.email }}
+          td {{ props.item.group }}
+          td {{ props.item.createdAt }}
           td.text-xs-right
             v-btn(
               icon
@@ -62,18 +60,15 @@ export default {
       pagination: {},
       headers: [
         {
-          text: 'Dessert (100g serving)',
+          text: 'Id',
           align: 'left',
           sortable: false,
-          value: 'name'
+          value: 'id'
         },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Sodium (mg)', value: 'sodium' },
-        { text: 'Calcium (%)', value: 'calcium' },
-        { text: 'Iron (%)', value: 'iron' }
+        { text: 'Name', align: 'left', value: 'name' },
+        { text: 'E-mail', align: 'left', value: 'email' },
+        { text: 'Group', align: 'left', value: 'group' },
+        { text: 'Created At', align: 'left', value: 'createdAt' }
       ]
     }
   },
@@ -130,114 +125,382 @@ export default {
     getDesserts () {
       return [
         {
-          value: false,
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: '14%',
-          iron: '1%'
+          id: '1',
+          name: 'name 1',
+          email: 'email 1',
+          group: 'group 1',
+          createdAt: 1510253928
         },
         {
-          value: false,
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          sodium: 129,
-          calcium: '8%',
-          iron: '1%'
+          id: '2',
+          name: 'name 2',
+          email: 'email 2',
+          group: 'group 2',
+          createdAt: 1510253868
         },
         {
-          value: false,
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          sodium: 337,
-          calcium: '6%',
-          iron: '7%'
+          id: '3',
+          name: 'name 3',
+          email: 'email 3',
+          group: 'group 3',
+          createdAt: 1510253808
         },
         {
-          value: false,
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          sodium: 413,
-          calcium: '3%',
-          iron: '8%'
+          id: '4',
+          name: 'name 4',
+          email: 'email 4',
+          group: 'group 4',
+          createdAt: 1510253748
         },
         {
-          value: false,
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          sodium: 327,
-          calcium: '7%',
-          iron: '16%'
+          id: '5',
+          name: 'name 5',
+          email: 'email 5',
+          group: 'group 5',
+          createdAt: 1510253688
         },
         {
-          value: false,
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          sodium: 50,
-          calcium: '0%',
-          iron: '0%'
+          id: '6',
+          name: 'name 6',
+          email: 'email 6',
+          group: 'group 6',
+          createdAt: 1510253628
         },
         {
-          value: false,
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          sodium: 38,
-          calcium: '0%',
-          iron: '2%'
+          id: '7',
+          name: 'name 7',
+          email: 'email 7',
+          group: 'group 7',
+          createdAt: 1510253568
         },
         {
-          value: false,
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          sodium: 562,
-          calcium: '0%',
-          iron: '45%'
+          id: '8',
+          name: 'name 8',
+          email: 'email 8',
+          group: 'group 8',
+          createdAt: 1510253508
         },
         {
-          value: false,
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          sodium: 326,
-          calcium: '2%',
-          iron: '22%'
+          id: '9',
+          name: 'name 9',
+          email: 'email 9',
+          group: 'group 9',
+          createdAt: 1510256297
         },
         {
-          value: false,
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: '12%',
-          iron: '6%'
+          id: '10',
+          name: 'name 10',
+          email: 'email 10',
+          group: 'group 10',
+          createdAt: 1510256237
+        },
+        {
+          id: '11',
+          name: 'name 11',
+          email: 'email 11',
+          group: 'group 11',
+          createdAt: 1510256177
+        },
+        {
+          id: '12',
+          name: 'name 12',
+          email: 'email 12',
+          group: 'group 12',
+          createdAt: 1510256117
+        },
+        {
+          id: '13',
+          name: 'name 13',
+          email: 'email 13',
+          group: 'group 13',
+          createdAt: 1510256057
+        },
+        {
+          id: '14',
+          name: 'name 14',
+          email: 'email 14',
+          group: 'group 14',
+          createdAt: 1510255997
+        },
+        {
+          id: '15',
+          name: 'name 15',
+          email: 'email 15',
+          group: 'group 15',
+          createdAt: 1510255937
+        },
+        {
+          id: '16',
+          name: 'name 16',
+          email: 'email 16',
+          group: 'group 16',
+          createdAt: 1510255877
+        },
+        {
+          id: '17',
+          name: 'name 17',
+          email: 'email 17',
+          group: 'group 17',
+          createdAt: 1510255817
+        },
+        {
+          id: '18',
+          name: 'name 18',
+          email: 'email 18',
+          group: 'group 18',
+          createdAt: 1510255757
+        },
+        {
+          id: '19',
+          name: 'name 19',
+          email: 'email 19',
+          group: 'group 19',
+          createdAt: 1510255697
+        },
+        {
+          id: '20',
+          name: 'name 20',
+          email: 'email 20',
+          group: 'group 20',
+          createdAt: 1510255637
+        },
+        {
+          id: '21',
+          name: 'name 21',
+          email: 'email 21',
+          group: 'group 21',
+          createdAt: 1510255577
+        },
+        {
+          id: '22',
+          name: 'name 22',
+          email: 'email 22',
+          group: 'group 22',
+          createdAt: 1510255517
+        },
+        {
+          id: '23',
+          name: 'name 23',
+          email: 'email 23',
+          group: 'group 23',
+          createdAt: 1510255457
+        },
+        {
+          id: '24',
+          name: 'name 24',
+          email: 'email 24',
+          group: 'group 24',
+          createdAt: 1510255397
+        },
+        {
+          id: '25',
+          name: 'name 25',
+          email: 'email 25',
+          group: 'group 25',
+          createdAt: 1510255337
+        },
+        {
+          id: '26',
+          name: 'name 26',
+          email: 'email 26',
+          group: 'group 26',
+          createdAt: 1510255277
+        },
+        {
+          id: '27',
+          name: 'name 27',
+          email: 'email 27',
+          group: 'group 27',
+          createdAt: 1510255217
+        },
+        {
+          id: '28',
+          name: 'name 28',
+          email: 'email 28',
+          group: 'group 28',
+          createdAt: 1510255157
+        },
+        {
+          id: '29',
+          name: 'name 29',
+          email: 'email 29',
+          group: 'group 29',
+          createdAt: 1510255097
+        },
+        {
+          id: '30',
+          name: 'name 30',
+          email: 'email 30',
+          group: 'group 30',
+          createdAt: 1510255037
+        },
+        {
+          id: '31',
+          name: 'name 31',
+          email: 'email 31',
+          group: 'group 31',
+          createdAt: 1510254977
+        },
+        {
+          id: '32',
+          name: 'name 32',
+          email: 'email 32',
+          group: 'group 32',
+          createdAt: 1510254917
+        },
+        {
+          id: '33',
+          name: 'name 33',
+          email: 'email 33',
+          group: 'group 33',
+          createdAt: 1510254857
+        },
+        {
+          id: '34',
+          name: 'name 34',
+          email: 'email 34',
+          group: 'group 34',
+          createdAt: 1510254797
+        },
+        {
+          id: '35',
+          name: 'name 35',
+          email: 'email 35',
+          group: 'group 35',
+          createdAt: 1510254737
+        },
+        {
+          id: '36',
+          name: 'name 36',
+          email: 'email 36',
+          group: 'group 36',
+          createdAt: 1510254677
+        },
+        {
+          id: '37',
+          name: 'name 37',
+          email: 'email 37',
+          group: 'group 37',
+          createdAt: 1510254617
+        },
+        {
+          id: '38',
+          name: 'name 38',
+          email: 'email 38',
+          group: 'group 38',
+          createdAt: 1510254557
+        },
+        {
+          id: '39',
+          name: 'name 39',
+          email: 'email 39',
+          group: 'group 39',
+          createdAt: 1510254497
+        },
+        {
+          id: '40',
+          name: 'name 40',
+          email: 'email 40',
+          group: 'group 40',
+          createdAt: 1510254437
+        },
+        {
+          id: '41',
+          name: 'name 41',
+          email: 'email 41',
+          group: 'group 41',
+          createdAt: 1510254377
+        },
+        {
+          id: '42',
+          name: 'name 42',
+          email: 'email 42',
+          group: 'group 42',
+          createdAt: 1510254317
+        },
+        {
+          id: '43',
+          name: 'name 43',
+          email: 'email 43',
+          group: 'group 43',
+          createdAt: 1510254257
+        },
+        {
+          id: '44',
+          name: 'name 44',
+          email: 'email 44',
+          group: 'group 44',
+          createdAt: 1510254197
+        },
+        {
+          id: '45',
+          name: 'name 45',
+          email: 'email 45',
+          group: 'group 45',
+          createdAt: 1510254137
+        },
+        {
+          id: '46',
+          name: 'name 46',
+          email: 'email 46',
+          group: 'group 46',
+          createdAt: 1510254077
+        },
+        {
+          id: '47',
+          name: 'name 47',
+          email: 'email 47',
+          group: 'group 47',
+          createdAt: 1510254017
+        },
+        {
+          id: '48',
+          name: 'name 48',
+          email: 'email 48',
+          group: 'group 48',
+          createdAt: 1510253957
+        },
+        {
+          id: '49',
+          name: 'name 49',
+          email: 'email 49',
+          group: 'group 49',
+          createdAt: 1510253897
+        },
+        {
+          id: '50',
+          name: 'name 50',
+          email: 'email 50',
+          group: 'group 50',
+          createdAt: 1510253837
+        },
+        {
+          id: '51',
+          name: 'name 51',
+          email: 'email 51',
+          group: 'group 51',
+          createdAt: 1510253777
+        },
+        {
+          id: '52',
+          name: 'name 52',
+          email: 'email 52',
+          group: 'group 52',
+          createdAt: 1510253717
+        },
+        {
+          id: '53',
+          name: 'name 53',
+          email: 'email 53',
+          group: 'group 53',
+          createdAt: 1510253657
+        },
+        {
+          id: '54',
+          name: 'name 54',
+          email: 'email 54',
+          group: 'group 54',
+          createdAt: 1510253597
         }
       ]
     }
