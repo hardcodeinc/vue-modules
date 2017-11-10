@@ -8,7 +8,7 @@ const state = merge({
   miniVariant: false,
   showSidebar: true,
   footerAbsolute: false,
-  footerFixed: true
+  footerFixed: false
 }, Vue.prototype.$env.theme)
 
 // getters

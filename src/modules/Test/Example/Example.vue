@@ -11,7 +11,6 @@
         :items="items"
         :loading="loading"
         :pagination.sync="pagination"
-        :rowsPerPageItems="rowsPerPageItems"
         :search="search"
         :total-items="totalItems"
         noDataText="Nenhum resultado disponível"
@@ -52,17 +51,15 @@
 export default {
   data () {
     return {
-      rowsPerPageItems: [5, 10, 25, { text: 'Todos', value: -1 }],
       search: '',
       totalItems: 0,
       items: [],
       loading: true,
-      pagination: {},
+      pagination: {rowsPerPage: 10},
       headers: [
         {
           text: 'Id',
           align: 'left',
-          sortable: false,
           value: 'id'
         },
         { text: 'Name', align: 'left', value: 'name' },
@@ -87,21 +84,20 @@ export default {
     getDataFromApi () {
       this.loading = true
       const { sortBy, descending, page, rowsPerPage } = this.pagination
-      console.log(page)
-      let query = ''
+      let query = '?'
 
       if (this.pagination.sortBy) {
         let order = descending ? 'desc' : 'asc'
-        query += '?sortBy=' + sortBy + '&order=' + order
+        query += '&sortBy=' + sortBy + '&order=' + order
+      }
+
+      if (rowsPerPage > 0) {
+        query += '&page=' + page + '&limit=' + rowsPerPage
       }
 
       return this.$http.get('users' + query).then(response => {
-        const total = response.data.length
+        const total = 50
         let items = response.data
-
-        if (rowsPerPage > 0) {
-          items = items.slice((page - 1) * rowsPerPage, page * rowsPerPage)
-        }
 
         this.loading = false
         return {
