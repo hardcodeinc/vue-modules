@@ -23,7 +23,7 @@
           td {{ props.item.name }}
           td {{ props.item.email }}
           td {{ props.item.group }}
-          td {{ props.item.createdAt }}
+          td {{ $moment.unix(props.item.createdAt) | moment('YYYY-MM-DD HH:mm') }}
           td.text-xs-right
             v-btn(
               icon
@@ -52,8 +52,7 @@ export default {
   data () {
     return {
       search: '',
-      totalItems: 0,
-      items: [],
+      totalItems: 50,
       loading: true,
       pagination: {rowsPerPage: 10},
       headers: [
@@ -70,8 +69,27 @@ export default {
     }
   },
   computed: {
+    items () {
+      return this.$store.getters.users
+    },
     pages () {
       return this.pagination.rowsPerPage ? Math.ceil(this.totalItems / this.pagination.rowsPerPage) : 0
+    },
+    query () {
+      const { sortBy, descending, page, rowsPerPage } = this.pagination
+      let query = {}
+
+      if (this.pagination.sortBy) {
+        query.sortBy = sortBy
+        query.order = descending ? 'desc' : 'asc'
+      }
+
+      if (rowsPerPage > 0) {
+        query.page = page
+        query.limit = rowsPerPage
+      }
+
+      return query
     }
   },
   methods: {
@@ -80,48 +98,20 @@ export default {
     },
     editRow (row) {
       console.log(row)
-    },
-    getDataFromApi () {
-      this.loading = true
-      const { sortBy, descending, page, rowsPerPage } = this.pagination
-      let query = '?'
-
-      if (this.pagination.sortBy) {
-        let order = descending ? 'desc' : 'asc'
-        query += '&sortBy=' + sortBy + '&order=' + order
-      }
-
-      if (rowsPerPage > 0) {
-        query += '&page=' + page + '&limit=' + rowsPerPage
-      }
-
-      return this.$http.get('users' + query).then(response => {
-        const total = 50
-        let items = response.data
-
-        this.loading = false
-        return {
-          items,
-          total
-        }
-      })
     }
   },
   mounted () {
-    this.getDataFromApi()
-    .then(data => {
-      this.items = data.items
-      this.totalItems = data.total
+    this.$store.dispatch('getUsers', this.query).then(() => {
+      this.loading = false
     })
   },
   watch: {
     pagination: {
       handler () {
-        this.getDataFromApi()
-          .then(data => {
-            this.items = data.items
-            this.totalItems = data.total
-          })
+        this.loading = true
+        this.$store.dispatch('getUsers', this.query).then(() => {
+          this.loading = false
+        })
       },
       deep: true
     }

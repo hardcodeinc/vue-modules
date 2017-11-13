@@ -1,5 +1,5 @@
 var merge = require('webpack-merge')
-import Vue from './bootstrap'
+import Vue from '@/bootstrap'
 
 // state
 const state = merge({

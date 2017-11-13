@@ -1,6 +1,6 @@
 import Layout from '@theme/components/Layout'
 import Home from './Home'
-import Example from './Example'
+import User from './User'
 
 export default [
   {
@@ -12,8 +12,8 @@ export default [
         component: Home
       },
       {
-        path: '/crud',
-        component: Example
+        path: '/users',
+        component: User
       }
     ]
   }

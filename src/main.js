@@ -1,1 +1,1 @@
-require('./modules/Theme')
+require('./index')
