@@ -33,7 +33,6 @@
   export default {
     data () {
       return {
-        show: this.showSidebar,
         menuPrincipal: [
           {icon: 'home', title: 'Home', to: '/'},
           {icon: 'supervisor_account', title: 'Users', to: '/users'},
@@ -41,9 +40,14 @@
         ]
       }
     },
-    watch: {
-      '$store.getters.showSidebar' () {
-        this.show = this.$store.getters.showSidebar
+    computed: {
+      show: {
+        get: function () {
+          return this.$store.getters.showSidebar
+        },
+        set: function (newValue) {
+          this.$store.dispatch('set', {prop: 'showSidebar', val: newValue})
+        }
       }
     }
   }

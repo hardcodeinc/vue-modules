@@ -22,13 +22,17 @@ const getters = {
 
 // actions
 const actions = {
-  toggle: ({ commit }, prop) => commit('toggleState', prop)
+  toggle: ({ commit }, prop) => commit('toggleState', prop),
+  set: ({ commit }, value) => commit('setState', value)
 }
 
 // mutations
 const mutations = {
   toggleState (state, prop) {
     state[prop] = !state[prop]
+  },
+  setState (state, value) {
+    state[value.prop] = value.val
   }
 }
 
