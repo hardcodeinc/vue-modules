@@ -57,9 +57,3 @@
     ])
   }
 </script>
-
-<style lang="stylus" scoped>
-nav
-  height: 200px
-  z-index: 0
-</style>

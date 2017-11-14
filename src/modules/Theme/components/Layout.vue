@@ -3,7 +3,8 @@
     sidebar
     app-bar
     main
-      v-content
+      .belt(:class="$colorClass('appBar')")
+      v-content.mb-5
         .pl-3.pr-3.pt-4
           v-slide-y-transition(mode="out-in")
             router-view
@@ -23,3 +24,12 @@
     }
   }
 </script>
+
+<style lang="stylus">
+  .belt
+    height: 200px
+    position: fixed
+    width: 100%
+    top: 0
+    left: 0
+</style>
